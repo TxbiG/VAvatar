@@ -1,5 +1,7 @@
 # VAvatar
 
+STILL BEING DEVELOPED
+
 [image]
 
 ## 3D Vtuber software engine
