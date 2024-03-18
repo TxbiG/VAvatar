@@ -12,3 +12,4 @@ Currently only supports Windows.
 [more image exmaples]
 
 ## Licensing
+MIT License
