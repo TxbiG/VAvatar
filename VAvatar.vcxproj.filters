@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{33274b9c-8a4e-49ee-89ca-a84ba23fd16b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\editor">
+      <UniqueIdentifier>{df641216-7c13-4d58-9f57-c7c1c11d07a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rendering">
+      <UniqueIdentifier>{374aa9b4-057c-454b-84fc-0019d26e8406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{c4f1e0e8-6c19-48ff-8dbb-43033f39e2b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\editor">
+      <UniqueIdentifier>{85a8cbd4-aee8-4c07-924f-a504b6ebc150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\rendering">
+      <UniqueIdentifier>{8523de73-3f30-4dec-aa39-8879e5d57d55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rendering\3D">
+      <UniqueIdentifier>{cc0d47d4-e019-4787-b352-78909af59b5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\rendering\3D">
+      <UniqueIdentifier>{8eb202aa-474e-44d9-b4dd-e44cacf9ba82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\editor\debugger">
+      <UniqueIdentifier>{fb952294-4d7c-490c-a505-ac88d9ff58d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\editor\export">
+      <UniqueIdentifier>{f9aa2e79-1aa1-41ee-850e-d1cf67fbc2f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\editor\import">
+      <UniqueIdentifier>{b1320891-aa02-4208-a027-28d3903d17c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\editor\gui">
+      <UniqueIdentifier>{f742caa1-0406-4a56-ae7a-68a45568aedc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\editor\icons">
+      <UniqueIdentifier>{af14a4f4-e1ae-4266-8e6d-3f01bba204d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\config">
+      <UniqueIdentifier>{f118e864-8439-4584-a502-2e168028bb2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\maths">
+      <UniqueIdentifier>{3483c32b-4092-4151-9731-0bb7fdf34cbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\debugger">
+      <UniqueIdentifier>{80bb4f4f-1bf4-4d97-904d-c36be4427fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\debugger">
+      <UniqueIdentifier>{643337f3-0171-4a2b-819e-dcf7b6166bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\editor\debugger">
+      <UniqueIdentifier>{1f9ec5ae-3bf8-496d-ba7a-13b4d0c2ade7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\config">
+      <UniqueIdentifier>{531e591e-e24a-4bf2-8e96-d7e2b171327a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\maths">
+      <UniqueIdentifier>{13efc967-d42a-4a4d-96e2-9cf557f48b45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\editor\export">
+      <UniqueIdentifier>{798fa936-97cf-4610-a0b4-e7ca18fe0c4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\editor\import">
+      <UniqueIdentifier>{359c4c9d-5eda-4495-9daf-f7f01da73783}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\editor\gui">
+      <UniqueIdentifier>{b3ec32d6-145d-45e2-9535-f6fed202c57a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\editor\icons">
+      <UniqueIdentifier>{566b9437-2af5-43ad-871a-31adf9d808b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rendering\2D">
+      <UniqueIdentifier>{d2cc4acf-8aec-4b4c-ae71-92d8f78bc787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\tracking">
+      <UniqueIdentifier>{0d5133e7-e6bf-4505-a092-ae1f2090d15a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\tracking">
+      <UniqueIdentifier>{a29f0947-da7d-4c7a-a790-768a5fef335e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="VAvatar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\VHub.cpp">
+      <Filter>Source Files\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\Viewport.cpp">
+      <Filter>Source Files\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\VEditor.cpp">
+      <Filter>Source Files\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\VAO.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\VBO.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\Camera.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\EBO.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\Material.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\Mesh.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\Model.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\shaderClass.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\Skeleton.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering\3D\Texture.cpp">
+      <Filter>Source Files\rendering\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\import\FBXLoader.cpp">
+      <Filter>Source Files\editor\import</Filter>
+    </ClCompile>
+    <ClCompile Include="core\tracking\Tracking.cpp">
+      <Filter>Source Files\core\tracking</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rendering\3D\VAO.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\VBO.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\Camera.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\EBO.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\Material.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\Mesh.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\Model.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\shaderClass.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\Skeleton.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering\3D\Texture.h">
+      <Filter>Header Files\rendering\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\VHub.h">
+      <Filter>Header Files\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\Viewport.h">
+      <Filter>Header Files\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\VEditor.h">
+      <Filter>Header Files\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\import\FBXLoader.h">
+      <Filter>Header Files\editor\import</Filter>
+    </ClInclude>
+    <ClInclude Include="core\tracking\Tracking.h">
+      <Filter>Header Files\core\tracking</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
