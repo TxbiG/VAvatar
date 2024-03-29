@@ -1,5 +1,5 @@
 # VAvatar
-![C++ - v20](https://img.shields.io/badge/C++-v20-green?logo=Cplusplus)
+![C++ - v20](https://img.shields.io/badge/C++-v20-green?)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 <space>
 STILL BEING DEVELOPED
