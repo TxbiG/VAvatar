@@ -1,5 +1,6 @@
 # VAvatar
 ![C++ - v14](https://img.shields.io/badge/C++-v14-green?)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/TxbiG/VAvatar/master)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 STILL BEING DEVELOPED
