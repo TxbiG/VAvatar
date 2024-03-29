@@ -12,4 +12,5 @@ Currently only supports Windows.
 ![Dear ImGui - v1.90.5](https://img.shields.io/badge/Dear_ImGui-v1.90.5-green?)
 ![FBXSDK - v2022](https://img.shields.io/badge/FBXSDK-v2022-green?)
 ![Glad - 0.1.36](https://img.shields.io/badge/Glad-v0.1.36-green?)
+![GLM - 4.2](https://img.shields.io/badge/GLM-v4.2-green?)
 ![GLFW - v3.4](https://img.shields.io/badge/GLFW-v3.4-green?)
