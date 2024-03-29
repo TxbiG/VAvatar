@@ -1,6 +1,9 @@
 # VAvatar
+![C - v20](https://img.shields.io/badge/C-v20-green?logo=C)
 ![C++ - v20](https://img.shields.io/badge/C++-v20-green?logo=Cplusplus)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)]([https://opensource.org/licenses/MIT](https://github.com/TxbiG/VAvatar?tab=MIT-1-ov-file))
+![x86 - v20](https://img.shields.io/badge/x86-v20-green)
+![ARM64 - v20](https://img.shields.io/badge/arm64-v20-green)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 STILL BEING DEVELOPED
 
 ## 3D Vtuber software engine
