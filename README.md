@@ -1,5 +1,5 @@
 # VAvatar
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/:packageName)
+![C++ - v20]([[https://img.shields.io/pypi/pyversions/:packageName](https://img.shields.io/badge/C++-green)]())
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)]([https://opensource.org/licenses/MIT](https://github.com/TxbiG/VAvatar?tab=MIT-1-ov-file))
 STILL BEING DEVELOPED
 
