@@ -1,7 +1,7 @@
 # VAvatar
 ![C++ - v20](https://img.shields.io/badge/C++-v20-green?logo=Cplusplus)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-/n
+<space>
 STILL BEING DEVELOPED
 
 ## 3D Vtuber software engine
