@@ -12,6 +12,6 @@ Currently only supports Windows.
 ### Third party
 ![Dear ImGui - v1.90.5](https://img.shields.io/badge/Dear_ImGui_v1.90.5-1BB76E)
 ![FBXSDK - v2022](https://img.shields.io/badge/FBXSDK-v2022-green?)
-![Glad - 0.1.36](https://img.shields.io/badge/Glad_v0.1.36-5586A4?logo=OpenGL)
+![Glad - 0.1.36](https://img.shields.io/badge/Glad_v0.1.36-5586A4)
 ![GLM - 4.2](https://img.shields.io/badge/GLM_v4.2-CA6201)
 ![GLFW - v3.4](https://img.shields.io/badge/GLFW_v3.4-CA6201)
