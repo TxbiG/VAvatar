@@ -1,7 +1,7 @@
 # VAvatar
 ![C++ - v14](https://img.shields.io/badge/C++_v14-00599C?logo=Cplusplus)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/TxbiG/VAvatar?color=006272)
-![License: MIT](https://img.shields.io/badge/License-MIT-006272)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/TxbiG/VAvatar?color=6DA252)
+![License: MIT](https://img.shields.io/badge/License-MIT-6DA252)
 
 STILL BEING DEVELOPED
 
