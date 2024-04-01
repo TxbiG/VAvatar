@@ -10,7 +10,7 @@ VAvatar is an open-source software for Vtubers to use.
 Currently only supports Windows.
 
 ### Third party
-![Dear ImGui - v1.90.5](https://img.shields.io/badge/Dear_ImGui_v1.90.5-1BB76E)
-![Glad - 0.1.36](https://img.shields.io/badge/Glad_v0.1.36-5586A4)
-![GLM - 4.2](https://img.shields.io/badge/GLM_v4.2-CA6201)
-![GLFW - v3.4](https://img.shields.io/badge/GLFW_v3.4-CA6201)
+[![Dear ImGui - v1.90.5](https://img.shields.io/badge/Dear_ImGui_v1.90.5-1BB76E)](https://github.com/ocornut/imgui)
+[![Glad - 0.1.36](https://img.shields.io/badge/Glad_v0.1.36-5586A4)](https://glad.dav1d.de/)
+[![GLM - 4.2](https://img.shields.io/badge/GLM_v4.2-CA6201)](https://github.com/g-truc/glm)
+[![GLFW - v3.4](https://img.shields.io/badge/GLFW_v3.4-CA6201)](https://www.glfw.org/)
