@@ -11,6 +11,6 @@ Currently only supports Windows.
 
 ### Third party
 [![Dear ImGui - v1.90.5](https://img.shields.io/badge/Dear_ImGui_v1.90.5-1BB76E)](https://github.com/ocornut/imgui)
-[![Glad - 0.1.36](https://img.shields.io/badge/Glad_v0.1.36-5586A4)](https://glad.dav1d.de/)
-[![GLM - 4.2](https://img.shields.io/badge/GLM_v4.2-CA6201)](https://github.com/g-truc/glm)
+[![Glad - v3.3](https://img.shields.io/badge/Glad_v3.3-5586A4)](https://glad.dav1d.de/)
+[![GLM - v4.2](https://img.shields.io/badge/GLM_v4.2-CA6201)](https://github.com/g-truc/glm)
 [![GLFW - v3.4](https://img.shields.io/badge/GLFW_v3.4-CA6201)](https://www.glfw.org/)
