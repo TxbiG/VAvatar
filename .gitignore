@@ -1,6 +1,12 @@
 # VAvatar
-
-/x64/
+# Ignore the x64 folder anywhere in the repository
 x64/
-Debug/
-.vs/
+
+# Ignore the x64 folder specifically within the Avatar folder
+VAvatar/x64/
+
+# Ignore the Debug folder inside the Avatar folder
+VAvatar/Debug/
+
+# Ignore the .vs folder inside the Avatar folder (this is usually for Visual Studio settings)
+VAvatar/.vs/
