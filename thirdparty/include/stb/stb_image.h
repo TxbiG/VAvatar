@@ -3125,7 +3125,7 @@ static int stbi__process_marker(stbi__jpeg *z, int m)
          L = stbi__get16be(z->s)-2;
          while (L > 0) {
             stbi_uc *v;
-            int sizes[16],i,n=0;
+            int sizes[16], i, n = 0;
             int q = stbi__get8(z->s);
             int tc = q >> 4;
             int th = q & 15;

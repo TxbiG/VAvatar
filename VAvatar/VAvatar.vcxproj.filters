@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Classes">
+      <UniqueIdentifier>{75daa52d-672e-481a-8cb3-7d1344a2cc5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes">
+      <UniqueIdentifier>{26116144-2968-4cb2-acb7-0faaa61125ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Classes\2D">
+      <UniqueIdentifier>{3533116e-b9a8-4190-b545-e5ea6e3bcc92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\2D">
+      <UniqueIdentifier>{f9034efb-1407-468b-a759-76147f18ac74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\3D">
+      <UniqueIdentifier>{66d97cc5-d575-4e71-8cef-a8348e127412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Classes\3D">
+      <UniqueIdentifier>{cc6c855e-7472-4418-bd6e-0b582274ae91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{23fb15bf-821e-41f2-89f8-e994867f870b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{c9becb47-2aa4-48eb-a8a1-56f942fdf791}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\VEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\VHub.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\Viewport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\AnimationPlayer.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\PostProcess.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\World.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\2D\Bone2D.cpp">
+      <Filter>Source Files\Classes\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\2D\Camera2D.cpp">
+      <Filter>Source Files\Classes\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\2D\Sprite2D.cpp">
+      <Filter>Source Files\Classes\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\Camera3D.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\EBO.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\Material.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\Mesh.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\Model.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\shaderClass.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\Texture.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\VAO.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\classes\3D\VBO.cpp">
+      <Filter>Source Files\Classes\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="core\tracking\Audio\AudioTracking.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\maths\Vector3D.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\maths\Vector2D.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\PNGTuber.cpp">
+      <Filter>Source Files\Classes\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="core\maths\DeltaTime.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\include\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\include\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\include\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\include\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\include\imgui_impl_glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\include\imgui_impl_opengl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thirdparty\include\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Surface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\VEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\VHub.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\Viewport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\PostProcess.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\World.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\AnimationPlayer.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\2D\Camera2D.h">
+      <Filter>Header Files\Classes\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\2D\Sprite2D.h">
+      <Filter>Header Files\Classes\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\2D\Bone2D.h">
+      <Filter>Header Files\Classes\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\VAO.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\VBO.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\Camera3D.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\EBO.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\Material.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\Mesh.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\Model.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\shaderClass.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\classes\3D\Texture.h">
+      <Filter>Header Files\Classes\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="core\tracking\Audio\AudioTracking.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\maths\Vector2D.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\maths\Vector3D.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="editor\PNGTuber.h">
+      <Filter>Header Files\Classes\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="core\maths\DeltaTime.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imgui_impl_opengl3_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imstb_rectpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imstb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imgui_impl_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thirdparty\include\imgui_impl_opengl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Surface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="VAvatar.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="VAvatar.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
