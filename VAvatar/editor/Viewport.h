@@ -16,7 +16,6 @@ public:
     bool init();
 
     void loop() const;
-    void input() const;
     void update();
     void render();
 

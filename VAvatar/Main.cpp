@@ -7,7 +7,7 @@
 
 //#include "editor/import/FBXLoader.h"
 
-#include "editor/VHub.h"
+//#include "editor/VHub.h"
 
 //VHub h;
 //#include "editor/VEditor.h"

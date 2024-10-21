@@ -146,6 +146,7 @@
     <ClCompile Include="..\thirdparty\include\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\thirdparty\include\imgui_tables.cpp" />
     <ClCompile Include="..\thirdparty\include\imgui_widgets.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="core\maths\DeltaTime.cpp" />
     <ClCompile Include="core\maths\Vector2D.cpp" />
     <ClCompile Include="core\maths\Vector3D.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="..\thirdparty\include\imstb_rectpack.h" />
     <ClInclude Include="..\thirdparty\include\imstb_textedit.h" />
     <ClInclude Include="..\thirdparty\include\imstb_truetype.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="core\maths\DeltaTime.h" />
     <ClInclude Include="core\maths\Vector2D.h" />
     <ClInclude Include="core\maths\Vector3D.h" />
