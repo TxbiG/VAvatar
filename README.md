@@ -1,5 +1,5 @@
 # VAvatar
-VAvatar is an open-source cross-platform VTuber tool. Built off the Moss Framework.
+VAvatar is an open-source cross-platform VTuber tool. Built off the [Moss Framework](https://github.com/TxbiG/MossFramework).
 
 ## Features
 - Graphics support OpenGL, Vulkan, DirectX 11 & 12
