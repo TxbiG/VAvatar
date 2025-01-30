@@ -1,3 +1,5 @@
+<div align="center"><img width=150 height=150 src=""/></div>
+
 # VAvatar
 VAvatar is an open-source cross-platform VTuber tool. Built off the [Moss Framework](https://github.com/TxbiG/MossFramework).
 
