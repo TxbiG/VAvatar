@@ -4,17 +4,22 @@
 VAvatar is an open-source cross-platform VTuber tool.
 
 ## Features
-- Graphics support OpenGL, Vulkan, Metal and DirectX
-- Supports Windows 10 & 11, Mac, and Linux
+- Graphics support OpenGL.
+- Supports Windows 10 & 11
 - Supports both 2D and 3D for PNGTuber, 2D-realism, and 3D-VTubers.
-- Supports Collisions and Physics
-- Supports Audio and Webcam tracking
+- Supports Audio and Webcam tracking.
 
 ## Documentation
 
 ## Examples
 
+## Roadmap
+- [ ] Add support to Mac and Linux.
+- [ ] Add Collisions and Physics support.
+- [ ] Add Youtube, Twitch, and Kick API alerts.
+
 ## Build
+Compiling for C++ 17.
 ```
 mkdir build
 cd build
