@@ -12,14 +12,17 @@ VAvatar is an open-source cross-platform VTuber tool. Built off the [Moss Framew
 
 ## Documentation
 
-## Supported platforms
+## Examples
 
 ## Build
 ```
 mkdir build
 cd build
 cmake ..
-cmake --build
+
+cmake --build . --config Debug
+# or
+cmake --build . --config Release
 ```
 
 ## Contributions
