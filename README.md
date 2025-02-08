@@ -17,6 +17,7 @@ VAvatar is an open-source cross-platform VTuber tool.
 - [ ] Add support to Mac and Linux.
 - [ ] Add Collisions and Physics support.
 - [ ] Add Youtube, Twitch, and Kick API alerts.
+- [ ] Vulkan and DirectX
 
 ## Build
 Compiling for C++ 17.
