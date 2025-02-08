@@ -30,5 +30,3 @@ cmake --build . --config Debug
 # or
 cmake --build . --config Release
 ```
-
-## Contributions
