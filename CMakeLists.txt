@@ -1,5 +1,7 @@
+# Minimum required version of CMake
 cmake_minimum_required(VERSION 3.16)
 
+# Project name and version
 project(VAvatar)
 
 # Set the C++ standard
@@ -31,7 +33,6 @@ add_library(imgui STATIC
     ${INCLUDE_DIR}/imgui_impl_opengl3.cpp
     ${INCLUDE_DIR}/imgui_widgets.cpp
     ${INCLUDE_DIR}/imgui_tables.cpp
-    ${INCLUDE_DIR}/imgui_demo.cpp
 )
 
 # Add GLAD library
