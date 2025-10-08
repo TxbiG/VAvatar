@@ -5,7 +5,7 @@ VAvatar is an open-source VTuber software.
 
 ## Features
 - Graphics support OpenGL.
-- Supports Windows 10 & 11.
+- Supports Linux, Windows, MacOS
 - Supports both 2D and 3D for PNGTuber, 2D-realism, and 3D-VTubers.
 - Supports Audio and Webcam tracking.
 
