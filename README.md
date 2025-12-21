@@ -30,11 +30,3 @@ cmake --build . --config Debug
 # or
 cmake --build . --config Release
 ```
-## Other apps
-[Docs](https://github.com/TxbiG/OpenPDF)
-[Slides](https://github.com/TxbiG/Slides)
-[Sheets](https://github.com/TxbiG/Sheets)
-[Emergence](https://github.com/TxbiG/Emergence)
-[PhotoWave](https://github.com/TxbiG/PhotoWave)
-[Illustria](https://github.com/TxbiG/Illustria)
-[Voluma](https://github.com/TxbiG/Voluma)
