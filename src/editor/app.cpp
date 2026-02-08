@@ -1,26 +1,14 @@
 #include "app.h"
 
-bool App::init(const char* name, int width, int height)
-{
-    this->width = width; // Set class member variables
-    this->height = height;
+bool App::init(const char* name, int width, int height) {
 
-    if (!glfwInit()) return false;
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    window = Moss_CreateWindow(name, width, height, NULL, NULL); // Use class member `window`
 
-    window = glfwCreateWindow(width, height, name, NULL, NULL); // Use class member `window`
-
-    if (!window)
-    {
-        glfwTerminate();
+    if (!window) {
+        Moss_TerminateWindow();
         return false;
     }
-
-    glfwMakeContextCurrent(window);
-    gladLoadGLLoader((GLADloadproc)glfwGetProcAddress); // Initialize GLAD
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -37,11 +25,9 @@ bool App::init(const char* name, int width, int height)
     return true;
 }
 
-void App::Terminate()
-{
+void App::Terminate() {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    Moss_TerminateWindow(window);
 }
