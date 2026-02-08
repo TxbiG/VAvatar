@@ -19,7 +19,6 @@ public:
     bool init(const char* name, int width, int height);
     void Terminate();
     
-    GLFWwindow* window;
-    int width, height;
+    Moss_Window* window;
 };
 #endif // VEDITOR_H
