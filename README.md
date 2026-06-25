@@ -1,7 +1,9 @@
 <div align="center"><img width=100 height=100 src="https://github.com/TxbiG/VAvatar/blob/main/assets/icons/VAvatar.ico"/></div>
 
-# VAvatar [Development]
+# VAvatar
 VAvatar is an open-source VTuber software.
+
+> **Status:** Incremental development
 
 ## Features
 - Supports OpenGL, Vulkan, DirectX 12, Metal.
