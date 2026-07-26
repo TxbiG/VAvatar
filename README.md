@@ -1,153 +1,52 @@
-<div align="center">
-    <img src="assets/icons/VAvatar.ico" width="128" alt="VAvatar Logo">
+<div align="center"><img width=100 height=100 src="https://github.com/TxbiG/VAvatar/blob/main/assets/icons/VAvatar.ico"/></div>
 
 # VAvatar
-**An open-source, cross-platform VTuber application.**
-</div>
 
-## Overview
+VAvatar is an open-source VTuber app for PNGTuber, Live2D / 2.5D, and 3D VTuber workflows.
 
-VAvatar is a modern, open-source VTuber application built in C++17 with a focus on performance, portability, and flexibility.
+The current architecture is built around one shared tracking pipeline. Voice and camera tracking create neutral tracking data, and the app maps that data into the selected avatar type.
 
-The goal is to provide a single application capable of supporting multiple avatar types and tracking methods while remaining lightweight and fully cross-platform.
+## Current Status
 
-Supporting PNGTubers, Live2D-style avatars, and 3D avatars with modern graphics APIs.
+VAvatar is in active incremental development. The current app has:
 
-> **Project Status**
->
-> VAvatar is currently under active incremental development. Features and APIs may change as development progresses.
-
----
-
-## Features
-
-### Rendering
-
-* OpenGL
-* Vulkan
-* DirectX 12
-* Metal
-
-### Platforms
-
-* Windows
-* Linux
-* macOS
-
-### Avatar Support
-
-* PNGTubers
-* 2D Realism
-* 3D VTubers
-
-### Tracking
-
-* Audio-based lip sync
-* Webcam face tracking
-
----
-
-## Planned Features
-
-* Physics and collision system
-* Blendshape animation
-* Expression editor
-* Scene editor
-* Plugin system
-* OBS integration
-* Stream overlays
-* YouTube alerts
-* Twitch alerts
-* Kick alerts
-
----
-
-## Screenshots
-
-> Coming soon.
-
----
-
-## Examples
-
-> Example projects and sample avatars will be added in future releases.
-
----
+- Moss-style app lifecycle.
+- Hub, Editor, and Stage windows.
+- PNGTuber asset slots and texture switching in the Editor and Stage.
+- WASAPI voice tracking.
+- Optional OpenCV camera tracking.
+- Shared tracking mapper for PNGTuber, Live2D / 2.5D, and 3D output values.
+- Simple `.vavatar` project save/load.
+- Project asset import into project folders.
+- Calibration preset save/load.
+- Custom Live2D / 2.5D grid deformation, masks, hierarchical deformers, spring physics, and binding editor.
 
 ## Documentation
 
-Documentation is currently being written.
+Start with the documentation index:
 
-Future documentation will include:
+- [Documentation index](docs/README.md)
+- [How the app works](docs/AppGuide.md)
+- [Architecture](docs/Architecture.md)
+- [Tracking](docs/Tracking.md)
+- [Projects and assets](docs/ProjectsAndAssets.md)
+- [Project structure](docs/ProjectStructure.md)
+- [Build and development](docs/BuildAndDevelopment.md)
+- [Roadmap](docs/Roadmap.md)
 
-* Getting Started
-* Building from Source
-* Avatar Creation
-* Tracking Configuration
-* Rendering Backends
-* Plugin Development
+## Build
 
----
+VAvatar uses C++17 and CMake.
 
-# Building
-
-## Requirements
-
-* CMake 3.20+
-* C++17 compatible compiler
-
-Clone the repository:
-
-```bash
-git clone https://github.com/TxbiG/VAvatar.git
-cd VAvatar
+```powershell
+cmake -S . -B build
+cmake --build build --config Debug
 ```
 
-Build:
+Or run the build-check helper:
 
-```bash
-mkdir build
-cd build
-
-cmake ..
-
-# Debug
-cmake --build . --config Debug
-
-# Release
-cmake --build . --config Release
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/check-build.ps1
 ```
 
----
-
-## Roadmap
-
-* [ ] Physics and collision support
-* [ ] Webcam tracking improvements
-* [ ] Audio tracking improvements
-* [ ] Blendshape animation
-* [ ] Live2D support
-* [ ] Plugin API
-* [ ] OBS integration
-* [ ] YouTube API alerts
-* [ ] Twitch API alerts
-* [ ] Kick API alerts
-
----
-
-## Contributing
-
-Contributions are welcome!
-
-Feel free to:
-
-* Open an issue
-* Submit a pull request
-* Suggest new features
-* Report bugs
-
----
-
-## License
-
-This project is licensed under the MIT License.
+OpenCV camera tracking is optional. If OpenCV is not found by CMake, VAvatar can still use preview/simulation tracking.

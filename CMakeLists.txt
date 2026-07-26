@@ -1,76 +1,86 @@
-# Minimum required version of CMake
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.20)
 
-# Project name and version
-project(VAvatar)
+project(VAvatar LANGUAGES CXX)
 
-# Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Paths to dependencies (adjust these paths as necessary)
-set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/external/include")
-set(LIB_DIR "${CMAKE_SOURCE_DIR}/external/lib")
+option(VAVATAR_ENABLE_OPENCV "Enable OpenCV camera tracking when OpenCV is available" ON)
 
-# Source files for your project
-set(SOURCES
-    main.cpp
-    src/editor/VHub.cpp          # Add VHub source file here
-    src/editor/VEditor.cpp       # Add VEditor source file here
-)
+set(MOSS_FRAMEWORK_DIR "C:/Users/TobyG/Documents/Codex/MossFramework" CACHE PATH "Path to Moss Framework")
 
-# Include directories
-include_directories(${INCLUDE_DIR} src)   # Include your source directory as well
+if(NOT EXISTS "${MOSS_FRAMEWORK_DIR}/CMakeLists.txt")
+    message(FATAL_ERROR "Moss Framework was not found at MOSS_FRAMEWORK_DIR='${MOSS_FRAMEWORK_DIR}'.")
+endif()
 
-# Link directories (for precompiled libraries like glfw3.lib)
-link_directories(${LIB_DIR})
+set(VAVATAR_EXTERNAL_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/external/include")
 
-# Add ImGui library
 add_library(imgui STATIC
-    ${INCLUDE_DIR}/imgui.cpp
-    ${INCLUDE_DIR}/imgui_draw.cpp
-    ${INCLUDE_DIR}/imgui_impl_glfw.cpp
-    ${INCLUDE_DIR}/imgui_impl_opengl3.cpp
-    ${INCLUDE_DIR}/imgui_widgets.cpp
-    ${INCLUDE_DIR}/imgui_tables.cpp
+    ${VAVATAR_EXTERNAL_INCLUDE}/imgui.cpp
+    ${VAVATAR_EXTERNAL_INCLUDE}/imgui_draw.cpp
+    ${VAVATAR_EXTERNAL_INCLUDE}/imgui_widgets.cpp
+    ${VAVATAR_EXTERNAL_INCLUDE}/imgui_tables.cpp
+    ${VAVATAR_EXTERNAL_INCLUDE}/imgui_impl_moss.cpp
+    ${VAVATAR_EXTERNAL_INCLUDE}/imgui_impl_opengl3.cpp
 )
 
-# Add GLAD library
-add_library(glad STATIC
-    src/glad.c
+target_include_directories(imgui PUBLIC
+    ${VAVATAR_EXTERNAL_INCLUDE}
+    ${MOSS_FRAMEWORK_DIR}/include
 )
 
-# Define the executable target (with WIN32 to avoid console window)
-add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
+# Moss owns platform, renderer, mesh/model and surface implementations.
+add_subdirectory("${MOSS_FRAMEWORK_DIR}" "${CMAKE_BINARY_DIR}/_deps/moss" EXCLUDE_FROM_ALL)
 
-# Link libraries to the executable
-target_link_libraries(${PROJECT_NAME}
-    glfw3                # Precompiled GLFW library
-    opengl32             # OpenGL library (Windows)
-    imgui                # Link ImGui library
-    glad                 # Link GLAD library
+add_executable(${PROJECT_NAME} WIN32
+    src/main.cpp
+    src/editor/app.cpp
+    src/editor/VHub.cpp
+    src/editor/VEditor.cpp
+    src/renderer/MossTexture.cpp
+    src/runtime/VStage.cpp
+    src/runtime/AvatarRuntime.cpp
+    src/core/avatar/AvatarTrackingMapper.cpp
+    src/core/avatar/AvatarRigs.cpp
+    src/core/project/ProjectDocument.cpp
+    src/core/tracking/Audio/AudioTracking.cpp
+    src/core/tracking/Camera/TrackingCamera.cpp
+    src/core/tracking/Camera/OpenCV/CameraTrackingOpenCV.cpp
 )
 
-# Define preprocessor definitions for ImGui
-target_compile_definitions(imgui PRIVATE IMGUI_IMPL_OPENGL_LOADER_GLAD)
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${VAVATAR_EXTERNAL_INCLUDE}
+    ${MOSS_FRAMEWORK_DIR}/include
+)
 
-# Set the output directories for the executable and libraries
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/bin/Debug")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/bin/Release")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/lib/Debug")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/lib/Release")
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    imgui
+    Moss::Moss
+    opengl32
+    gdiplus
+    comdlg32
+    shell32
+    ole32
+)
 
-# Set Debug and Release specific compile flags
-set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /Zi /Ob0 /Od /RTC1")
-set(CMAKE_C_FLAGS_DEBUG "/D_DEBUG /Zi /Ob0 /Od /RTC1")
+if(VAVATAR_ENABLE_OPENCV)
+    find_package(OpenCV QUIET COMPONENTS core imgproc objdetect videoio calib3d face)
+    if(OpenCV_FOUND)
+        target_include_directories(${PROJECT_NAME} PRIVATE ${OpenCV_INCLUDE_DIRS})
+        target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
+        target_compile_definitions(${PROJECT_NAME} PRIVATE VAVATAR_ENABLE_OPENCV=1)
+    else()
+        message(WARNING "OpenCV not found; camera tracking will use preview/simulation mode.")
+    endif()
+endif()
 
-set(CMAKE_CXX_FLAGS_RELEASE "/O2 /DNDEBUG")
-set(CMAKE_C_FLAGS_RELEASE "/O2 /DNDEBUG")
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W3)
+    target_link_options(${PROJECT_NAME} PRIVATE /ENTRY:mainCRTStartup)
+endif()
 
-# Set the output directory for the executable based on build type
 set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
-
-# Add the explicit entry point for the linker
-set(CMAKE_EXE_LINKER_FLAGS "/ENTRY:mainCRTStartup")

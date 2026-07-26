@@ -1,3 +1,18 @@
-.vscode
+.vscode/
 
-build
+# Local/generated build output
+build/
+build-*/
+out/
+
+# Local VAvatar project data created while testing
+Projects/
+*.vavatar
+*.vcal
+
+# Editor/OS noise
+*.user
+*.suo
+*.log
+Thumbs.db
+Desktop.ini

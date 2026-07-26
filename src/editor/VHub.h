@@ -3,32 +3,28 @@
 
 #include "app.h"
 
-using namespace std;
-
-#define MAX_PATH 256
+#include <string>
+#include <vector>
 
 class VHub
 {
 public:
-    bool init();
-    void GUI();
-
-    void Terminate() { app.Terminate(); }
+    // Run the Hub window until the user chooses Editor, Stage, or Exit.
+    HubResult init();
 
 private:
-    GLuint my_texture = 0;
-    int image_width = 0, image_height = 0;
+    // Draw the Hub controls for selecting or creating a VTuber project.
+    void GUI();
+
+    static constexpr int MaxPathLength = 256;
+
     const char* current_item = nullptr;
-
-    char path[MAX_PATH];
-    char nameSize[MAX_PATH];
-    std::vector<std::string> cameraNames;
-    std::vector<std::string> avatarList;
-    int camID = 0;
-    bool running = true;
-
-
+    char path[MaxPathLength] = {};
+    char name[MaxPathLength] = {};
+    std::vector<std::string> cameraNames = { "Default Moss Camera" };
+    std::vector<std::string> avatarList = { "Sample PNGTuber" };
+    HubResult result = HubResult::Exit;
     App app;
 };
 
-#endif // VHUB_H
+#endif
