@@ -8,7 +8,17 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 option(VAVATAR_ENABLE_OPENCV "Enable OpenCV camera tracking when OpenCV is available" ON)
 
-set(MOSS_FRAMEWORK_DIR "C:/Users/TobyG/Documents/Codex/MossFramework" CACHE PATH "Path to Moss Framework")
+# Prefer an explicit -DMOSS_FRAMEWORK_DIR; otherwise try a sibling checkout named MossFramework.
+if(NOT DEFINED MOSS_FRAMEWORK_DIR OR MOSS_FRAMEWORK_DIR STREQUAL "")
+    set(_try_moss_sibling "${CMAKE_CURRENT_SOURCE_DIR}/../MossFramework")
+    if(EXISTS "${_try_moss_sibling}/CMakeLists.txt")
+        set(MOSS_FRAMEWORK_DIR "${_try_moss_sibling}" CACHE PATH "Path to Moss Framework" FORCE)
+    else()
+        message(FATAL_ERROR "MOSS_FRAMEWORK_DIR not set and no sibling MossFramework found; pass -DMOSS_FRAMEWORK_DIR=/path/to/MossFramework")
+    endif()
+else()
+    set(MOSS_FRAMEWORK_DIR "${MOSS_FRAMEWORK_DIR}" CACHE PATH "Path to Moss Framework")
+endif()
 
 if(NOT EXISTS "${MOSS_FRAMEWORK_DIR}/CMakeLists.txt")
     message(FATAL_ERROR "Moss Framework was not found at MOSS_FRAMEWORK_DIR='${MOSS_FRAMEWORK_DIR}'.")
@@ -33,7 +43,8 @@ target_include_directories(imgui PUBLIC
 # Moss owns platform, renderer, mesh/model and surface implementations.
 add_subdirectory("${MOSS_FRAMEWORK_DIR}" "${CMAKE_BINARY_DIR}/_deps/moss" EXCLUDE_FROM_ALL)
 
-add_executable(${PROJECT_NAME} WIN32
+# Common sources for all platforms
+set(VAVATAR_SOURCES
     src/main.cpp
     src/editor/app.cpp
     src/editor/VHub.cpp
@@ -44,9 +55,19 @@ add_executable(${PROJECT_NAME} WIN32
     src/core/avatar/AvatarTrackingMapper.cpp
     src/core/avatar/AvatarRigs.cpp
     src/core/project/ProjectDocument.cpp
-    src/core/tracking/Audio/AudioTracking.cpp
     src/core/tracking/Camera/TrackingCamera.cpp
     src/core/tracking/Camera/OpenCV/CameraTrackingOpenCV.cpp
+)
+
+# Platform-specific audio implementation: use WASAPI on Windows, a stub on other platforms.
+if(WIN32)
+    list(APPEND VAVATAR_SOURCES src/core/tracking/Audio/AudioTracking.cpp)
+else()
+    list(APPEND VAVATAR_SOURCES src/core/tracking/Audio/AudioTracking_stub.cpp)
+endif()
+
+add_executable(${PROJECT_NAME}
+    ${VAVATAR_SOURCES}
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -55,15 +76,22 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${MOSS_FRAMEWORK_DIR}/include
 )
 
+# Link common libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE
     imgui
     Moss::Moss
-    opengl32
-    gdiplus
-    comdlg32
-    shell32
-    ole32
 )
+
+# Windows-only system libraries
+if(WIN32)
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        opengl32
+        gdiplus
+        comdlg32
+        shell32
+        ole32
+    )
+endif()
 
 if(VAVATAR_ENABLE_OPENCV)
     find_package(OpenCV QUIET COMPONENTS core imgproc objdetect videoio calib3d face)

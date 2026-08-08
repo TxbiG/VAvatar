@@ -1,13 +1,45 @@
 #ifndef AUDIOTRACKING_H
 #define AUDIOTRACKING_H
 
-#include <Audioclient.h>
-#include <Windows.h>
 #include <atomic>
-#include <mmdeviceapi.h>
 #include <mutex>
 #include <string>
 #include <thread>
+#include <cstdint>
+
+#ifdef _WIN32
+#include <Audioclient.h>
+#include <Windows.h>
+#include <mmdeviceapi.h>
+#else
+// Provide lightweight stand-ins for Windows audio types so the header can be
+// included/compiled on non-Windows platforms. The real WASAPI implementation
+// remains in AudioTracking.cpp and is only built on Windows.
+using BYTE = unsigned char;
+using UINT32 = uint32_t;
+
+struct WAVEFORMATEX {
+    int wFormatTag;
+    int nChannels;
+    int nSamplesPerSec;
+    int nAvgBytesPerSec;
+    int nBlockAlign;
+    int wBitsPerSample;
+    int cbSize;
+};
+
+struct WAVEFORMATEXTENSIBLE {
+    WAVEFORMATEX Format;
+    struct { unsigned int Data1; } SubFormat;
+    int cbSize;
+};
+
+// Dummy forward declarations to avoid depending on Windows COM types.
+struct IAudioClient {};
+struct IAudioCaptureClient {};
+struct IMMDevice {};
+struct IMMDeviceEnumerator {};
+#endif
 
 struct VoiceTrackingState {
     bool available = false;
@@ -32,7 +64,7 @@ public:
     AudioTracking(const AudioTracking&) = delete;
     AudioTracking& operator=(const AudioTracking&) = delete;
 
-    // Start the WASAPI capture worker if it is not already running.
+    // Start the capture worker if it is not already running.
     bool start();
 
     // Stop the capture worker and release audio resources.
@@ -69,13 +101,13 @@ public:
     VoiceTrackingState getState() const;
 
 private:
-    // Worker-thread loop that initializes COM/audio and captures packets.
+    // Worker-thread loop that initializes audio and captures packets.
     void captureLoop();
 
-    // Open the default microphone and prepare WASAPI shared capture.
+    // Open the default microphone and prepare capture.
     bool initializeAudio();
 
-    // Release all WASAPI objects owned by this tracker.
+    // Release all audio objects owned by this tracker.
     void shutdownAudio();
 
     // Drain all currently available microphone packets into RMS state.
@@ -84,7 +116,7 @@ private:
     // Store user-facing microphone status text.
     void setStatus(const std::string& status);
 
-    // Calculate RMS for supported WASAPI sample formats.
+    // Calculate RMS for supported sample formats.
     float calculateRms(const BYTE* data, UINT32 frameCount, const WAVEFORMATEX& format) const;
 
     std::atomic<bool> m_running{ false };
@@ -100,11 +132,13 @@ private:
     std::string m_deviceName = "No microphone";
     std::string m_status = "Microphone stopped";
 
+#ifdef _WIN32
     IAudioClient* m_audioClient = nullptr;
     IAudioCaptureClient* m_captureClient = nullptr;
     IMMDevice* m_device = nullptr;
     IMMDeviceEnumerator* m_enumerator = nullptr;
     WAVEFORMATEX* m_mixFormat = nullptr;
+#endif
 };
 
 #endif
