@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout VAvatar
+        uses: actions/checkout@v4
+        with:
+          path: VAvatar
+
+      - name: Checkout Moss (dependency)
+        uses: actions/checkout@v4
+        with:
+          repository: TxbiG/Moss
+          path: Moss
+          submodules: recursive
+
+      - name: Configure
+        working-directory: VAvatar
+        run: >
+          cmake -S . -B build
+          -G "Visual Studio 17 2022" -A x64
+          -DMOSS_FRAMEWORK_DIR=${{ github.workspace }}/Moss
+
+      - name: Build
+        working-directory: VAvatar
+        run: cmake --build build --config Debug
+
+# Linux/macOS legs are intentionally omitted. VAvatar currently builds as
+# a WIN32-subsystem executable, links Windows-only system libraries
+# (gdiplus, comdlg32, shell32, ole32), and its AudioTracking implementation
+# is WASAPI-only (Windows audio API). Adding os: [ubuntu-latest, macos-latest]
+# to a matrix here will fail at compile/link time until:
+#   1. add_executable(${PROJECT_NAME} WIN32 ...) is gated behind if(WIN32)
+#   2. the gdiplus/comdlg32/shell32/ole32 link line is gated behind if(WIN32)
+#   3. AudioTracking gets a platform-abstracted backend (CoreAudio on macOS,
+#      PulseAudio/ALSA on Linux) alongside the existing WASAPI one
+# Once those are done, this workflow can be widened to the same
+# os: [windows-latest, ubuntu-latest, macos-latest] matrix used in
+# Moss/CMoss's workflows, with the matching Linux dependency-install step.
