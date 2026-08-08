@@ -59,9 +59,13 @@ set(VAVATAR_SOURCES
     src/core/tracking/Camera/OpenCV/CameraTrackingOpenCV.cpp
 )
 
-# Platform-specific audio implementation: use WASAPI on Windows, a stub on other platforms.
+# Platform-specific audio implementation: use WASAPI on Windows, CoreAudio on macOS, ALSA on Linux, a stub otherwise.
 if(WIN32)
     list(APPEND VAVATAR_SOURCES src/core/tracking/Audio/AudioTracking.cpp)
+elseif(APPLE)
+    list(APPEND VAVATAR_SOURCES src/core/tracking/Audio/AudioTracking_coreaudio.cpp)
+elseif(UNIX)
+    list(APPEND VAVATAR_SOURCES src/core/tracking/Audio/AudioTracking_alsa.cpp)
 else()
     list(APPEND VAVATAR_SOURCES src/core/tracking/Audio/AudioTracking_stub.cpp)
 endif()
@@ -104,7 +108,8 @@ if(VAVATAR_ENABLE_OPENCV)
     endif()
 endif()
 
-if(MSVC)
+# MSVC-specific flags: only set these when building on Windows with MSVC.
+if(MSVC AND WIN32)
     target_compile_options(${PROJECT_NAME} PRIVATE /W3)
     target_link_options(${PROJECT_NAME} PRIVATE /ENTRY:mainCRTStartup)
 endif()
