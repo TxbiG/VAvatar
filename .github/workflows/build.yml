@@ -2,11 +2,17 @@ name: Build
 
 on:
   push:
+    branches: [ main, develop ] # Optimize 1: Limit triggers to prevent wasted minutes
   pull_request:
+    branches: [ main, develop ]
   workflow_dispatch:
 
 jobs:
   build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config: [Debug, Release] # Optimize 2: Matrix added to ensure both build types are verified
     runs-on: windows-2022
     steps:
       - name: Checkout VAvatar
@@ -21,26 +27,26 @@ jobs:
           path: Moss
           submodules: recursive
 
+      # Optimize 3: MSVC Compiler caching for Windows
+      - name: Setup Sccache
+        uses: mozilla-actions/sccache-action@v0.0.7
+
       - name: Configure
         working-directory: VAvatar
+        env:
+          # Wire Sccache into the CMake environment for MSVC
+          CMAKE_CONFIG_FLAGS: "-DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache"
         run: >
           cmake -S . -B build
           -G "Visual Studio 17 2022" -A x64
-          -DMOSS_FRAMEWORK_DIR=${{ github.workspace }}/Moss
+          -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+          -DMOSS_FRAMEWORK_DIR="${{ github.workspace }}/Moss"
+          $env:CMAKE_CONFIG_FLAGS
 
+      # Optimize 4: Enabled parallel MSBuild compilation and dynamic configuration
       - name: Build
         working-directory: VAvatar
-        run: cmake --build build --config Debug
-
-# Linux/macOS legs are intentionally omitted. VAvatar currently builds as
-# a WIN32-subsystem executable, links Windows-only system libraries
-# (gdiplus, comdlg32, shell32, ole32), and its AudioTracking implementation
-# is WASAPI-only (Windows audio API). Adding os: [ubuntu-latest, macos-latest]
-# to a matrix here will fail at compile/link time until:
-#   1. add_executable(${PROJECT_NAME} WIN32 ...) is gated behind if(WIN32)
-#   2. the gdiplus/comdlg32/shell32/ole32 link line is gated behind if(WIN32)
-#   3. AudioTracking gets a platform-abstracted backend (CoreAudio on macOS,
-#      PulseAudio/ALSA on Linux) alongside the existing WASAPI one
-# Once those are done, this workflow can be widened to the same
-# os: [windows-latest, ubuntu-latest, macos-latest] matrix used in
-# Moss/CMoss's workflows, with the matching Linux dependency-install step.
+        run: >
+          cmake --build build 
+          --config ${{ matrix.config }} 
+          --parallel %NUMBER_OF_PROCESSORS%
