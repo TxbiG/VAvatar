@@ -49,7 +49,6 @@ set(VAVATAR_SOURCES
     src/editor/app.cpp
     src/editor/VHub.cpp
     src/editor/VEditor.cpp
-    src/renderer/MossTexture.cpp
     src/runtime/VStage.cpp
     src/runtime/AvatarRuntime.cpp
     src/core/avatar/AvatarTrackingMapper.cpp
