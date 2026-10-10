@@ -13,62 +13,62 @@ struct BackendData {
 
 BackendData* g_backend = nullptr;
 
-struct KeyMap { ImGuiKey imgui; Moss_Keyboard moss; };
+struct KeyMap { ImGuiKey imgui; Keyboard moss; };
 
 constexpr KeyMap kKeys[] = {
-    {ImGuiKey_Tab, Moss_Keyboard::KEY_TAB}, {ImGuiKey_LeftArrow, Moss_Keyboard::KEY_LEFT},
-    {ImGuiKey_RightArrow, Moss_Keyboard::KEY_RIGHT}, {ImGuiKey_UpArrow, Moss_Keyboard::KEY_UP},
-    {ImGuiKey_DownArrow, Moss_Keyboard::KEY_DOWN}, {ImGuiKey_PageUp, Moss_Keyboard::KEY_PAGE_UP},
-    {ImGuiKey_PageDown, Moss_Keyboard::KEY_PAGE_DOWN}, {ImGuiKey_Home, Moss_Keyboard::KEY_HOME},
-    {ImGuiKey_End, Moss_Keyboard::KEY_END}, {ImGuiKey_Insert, Moss_Keyboard::KEY_INSERT},
-    {ImGuiKey_Delete, Moss_Keyboard::KEY_DELETE}, {ImGuiKey_Backspace, Moss_Keyboard::KEY_BACKSPACE},
-    {ImGuiKey_Space, Moss_Keyboard::KEY_SPACE}, {ImGuiKey_Enter, Moss_Keyboard::KEY_ENTER},
-    {ImGuiKey_Escape, Moss_Keyboard::KEY_ESCAPE}, {ImGuiKey_LeftCtrl, Moss_Keyboard::KEY_LEFT_CONTROL},
-    {ImGuiKey_LeftShift, Moss_Keyboard::KEY_LEFT_SHIFT}, {ImGuiKey_LeftAlt, Moss_Keyboard::KEY_LEFT_ALT},
-    {ImGuiKey_LeftSuper, Moss_Keyboard::KEY_LEFT_SUPER}, {ImGuiKey_RightCtrl, Moss_Keyboard::KEY_RIGHT_CONTROL},
-    {ImGuiKey_RightShift, Moss_Keyboard::KEY_RIGHT_SHIFT}, {ImGuiKey_RightAlt, Moss_Keyboard::KEY_RIGHT_ALT},
-    {ImGuiKey_RightSuper, Moss_Keyboard::KEY_RIGHT_SUPER}, {ImGuiKey_Menu, Moss_Keyboard::KEY_MENU},
-    {ImGuiKey_0, Moss_Keyboard::KEY_0}, {ImGuiKey_1, Moss_Keyboard::KEY_1},
-    {ImGuiKey_2, Moss_Keyboard::KEY_2}, {ImGuiKey_3, Moss_Keyboard::KEY_3},
-    {ImGuiKey_4, Moss_Keyboard::KEY_4}, {ImGuiKey_5, Moss_Keyboard::KEY_5},
-    {ImGuiKey_6, Moss_Keyboard::KEY_6}, {ImGuiKey_7, Moss_Keyboard::KEY_7},
-    {ImGuiKey_8, Moss_Keyboard::KEY_8}, {ImGuiKey_9, Moss_Keyboard::KEY_9},
-    {ImGuiKey_A, Moss_Keyboard::KEY_A}, {ImGuiKey_B, Moss_Keyboard::KEY_B},
-    {ImGuiKey_C, Moss_Keyboard::KEY_C}, {ImGuiKey_D, Moss_Keyboard::KEY_D},
-    {ImGuiKey_E, Moss_Keyboard::KEY_E}, {ImGuiKey_F, Moss_Keyboard::KEY_F},
-    {ImGuiKey_G, Moss_Keyboard::KEY_G}, {ImGuiKey_H, Moss_Keyboard::KEY_H},
-    {ImGuiKey_I, Moss_Keyboard::KEY_I}, {ImGuiKey_J, Moss_Keyboard::KEY_J},
-    {ImGuiKey_K, Moss_Keyboard::KEY_K}, {ImGuiKey_L, Moss_Keyboard::KEY_L},
-    {ImGuiKey_M, Moss_Keyboard::KEY_M}, {ImGuiKey_N, Moss_Keyboard::KEY_N},
-    {ImGuiKey_O, Moss_Keyboard::KEY_O}, {ImGuiKey_P, Moss_Keyboard::KEY_P},
-    {ImGuiKey_Q, Moss_Keyboard::KEY_Q}, {ImGuiKey_R, Moss_Keyboard::KEY_R},
-    {ImGuiKey_S, Moss_Keyboard::KEY_S}, {ImGuiKey_T, Moss_Keyboard::KEY_T},
-    {ImGuiKey_U, Moss_Keyboard::KEY_U}, {ImGuiKey_V, Moss_Keyboard::KEY_V},
-    {ImGuiKey_W, Moss_Keyboard::KEY_W}, {ImGuiKey_X, Moss_Keyboard::KEY_X},
-    {ImGuiKey_Y, Moss_Keyboard::KEY_Y}, {ImGuiKey_Z, Moss_Keyboard::KEY_Z},
-    {ImGuiKey_F1, Moss_Keyboard::KEY_F1}, {ImGuiKey_F2, Moss_Keyboard::KEY_F2},
-    {ImGuiKey_F3, Moss_Keyboard::KEY_F3}, {ImGuiKey_F4, Moss_Keyboard::KEY_F4},
-    {ImGuiKey_F5, Moss_Keyboard::KEY_F5}, {ImGuiKey_F6, Moss_Keyboard::KEY_F6},
-    {ImGuiKey_F7, Moss_Keyboard::KEY_F7}, {ImGuiKey_F8, Moss_Keyboard::KEY_F8},
-    {ImGuiKey_F9, Moss_Keyboard::KEY_F9}, {ImGuiKey_F10, Moss_Keyboard::KEY_F10},
-    {ImGuiKey_F11, Moss_Keyboard::KEY_F11}, {ImGuiKey_F12, Moss_Keyboard::KEY_F12},
-    {ImGuiKey_Apostrophe, Moss_Keyboard::KEY_APOSTROPHE}, {ImGuiKey_Comma, Moss_Keyboard::KEY_COMMA},
-    {ImGuiKey_Minus, Moss_Keyboard::KEY_MINUS}, {ImGuiKey_Period, Moss_Keyboard::KEY_PERIOD},
-    {ImGuiKey_Slash, Moss_Keyboard::KEY_SLASH}, {ImGuiKey_Semicolon, Moss_Keyboard::KEY_SEMICOLON},
-    {ImGuiKey_Equal, Moss_Keyboard::KEY_EQUAL}, {ImGuiKey_LeftBracket, Moss_Keyboard::KEY_LEFT_BRACKET},
-    {ImGuiKey_Backslash, Moss_Keyboard::KEY_BACKSLASH}, {ImGuiKey_RightBracket, Moss_Keyboard::KEY_RIGHT_BRACKET},
-    {ImGuiKey_GraveAccent, Moss_Keyboard::KEY_GRAVE_ACCENT}, {ImGuiKey_CapsLock, Moss_Keyboard::KEY_CAPS_LOCK},
-    {ImGuiKey_ScrollLock, Moss_Keyboard::KEY_SCROLL_LOCK}, {ImGuiKey_NumLock, Moss_Keyboard::KEY_NUM_LOCK},
-    {ImGuiKey_PrintScreen, Moss_Keyboard::KEY_PRINT_SCREEN}, {ImGuiKey_Pause, Moss_Keyboard::KEY_PAUSE},
-    {ImGuiKey_Keypad0, Moss_Keyboard::KEY_KP_0}, {ImGuiKey_Keypad1, Moss_Keyboard::KEY_KP_1},
-    {ImGuiKey_Keypad2, Moss_Keyboard::KEY_KP_2}, {ImGuiKey_Keypad3, Moss_Keyboard::KEY_KP_3},
-    {ImGuiKey_Keypad4, Moss_Keyboard::KEY_KP_4}, {ImGuiKey_Keypad5, Moss_Keyboard::KEY_KP_5},
-    {ImGuiKey_Keypad6, Moss_Keyboard::KEY_KP_6}, {ImGuiKey_Keypad7, Moss_Keyboard::KEY_KP_7},
-    {ImGuiKey_Keypad8, Moss_Keyboard::KEY_KP_8}, {ImGuiKey_Keypad9, Moss_Keyboard::KEY_KP_9},
-    {ImGuiKey_KeypadDecimal, Moss_Keyboard::KEY_KP_DECIMAL}, {ImGuiKey_KeypadDivide, Moss_Keyboard::KEY_KP_DIVIDE},
-    {ImGuiKey_KeypadMultiply, Moss_Keyboard::KEY_KP_MULTIPLY}, {ImGuiKey_KeypadSubtract, Moss_Keyboard::KEY_KP_SUBTRACT},
-    {ImGuiKey_KeypadAdd, Moss_Keyboard::KEY_KP_ADD}, {ImGuiKey_KeypadEnter, Moss_Keyboard::KEY_KP_ENTER},
-    {ImGuiKey_KeypadEqual, Moss_Keyboard::KEY_KP_EQUAL}
+    {ImGuiKey_Tab, Keyboard::KEY_TAB}, {ImGuiKey_LeftArrow, Keyboard::KEY_LEFT},
+    {ImGuiKey_RightArrow, Keyboard::KEY_RIGHT}, {ImGuiKey_UpArrow, Keyboard::KEY_UP},
+    {ImGuiKey_DownArrow, Keyboard::KEY_DOWN}, {ImGuiKey_PageUp, Keyboard::KEY_PAGE_UP},
+    {ImGuiKey_PageDown, Keyboard::KEY_PAGE_DOWN}, {ImGuiKey_Home, Keyboard::KEY_HOME},
+    {ImGuiKey_End, Keyboard::KEY_END}, {ImGuiKey_Insert, Keyboard::KEY_INSERT},
+    {ImGuiKey_Delete, Keyboard::KEY_DELETE}, {ImGuiKey_Backspace, Keyboard::KEY_BACKSPACE},
+    {ImGuiKey_Space, Keyboard::KEY_SPACE}, {ImGuiKey_Enter, Keyboard::KEY_ENTER},
+    {ImGuiKey_Escape, Keyboard::KEY_ESCAPE}, {ImGuiKey_LeftCtrl, Keyboard::KEY_LEFT_CONTROL},
+    {ImGuiKey_LeftShift, Keyboard::KEY_LEFT_SHIFT}, {ImGuiKey_LeftAlt, Keyboard::KEY_LEFT_ALT},
+    {ImGuiKey_LeftSuper, Keyboard::KEY_LEFT_SUPER}, {ImGuiKey_RightCtrl, Keyboard::KEY_RIGHT_CONTROL},
+    {ImGuiKey_RightShift, Keyboard::KEY_RIGHT_SHIFT}, {ImGuiKey_RightAlt, Keyboard::KEY_RIGHT_ALT},
+    {ImGuiKey_RightSuper, Keyboard::KEY_RIGHT_SUPER}, {ImGuiKey_Menu, Keyboard::KEY_MENU},
+    {ImGuiKey_0, Keyboard::KEY_0}, {ImGuiKey_1, Keyboard::KEY_1},
+    {ImGuiKey_2, Keyboard::KEY_2}, {ImGuiKey_3, Keyboard::KEY_3},
+    {ImGuiKey_4, Keyboard::KEY_4}, {ImGuiKey_5, Keyboard::KEY_5},
+    {ImGuiKey_6, Keyboard::KEY_6}, {ImGuiKey_7, Keyboard::KEY_7},
+    {ImGuiKey_8, Keyboard::KEY_8}, {ImGuiKey_9, Keyboard::KEY_9},
+    {ImGuiKey_A, Keyboard::KEY_A}, {ImGuiKey_B, Keyboard::KEY_B},
+    {ImGuiKey_C, Keyboard::KEY_C}, {ImGuiKey_D, Keyboard::KEY_D},
+    {ImGuiKey_E, Keyboard::KEY_E}, {ImGuiKey_F, Keyboard::KEY_F},
+    {ImGuiKey_G, Keyboard::KEY_G}, {ImGuiKey_H, Keyboard::KEY_H},
+    {ImGuiKey_I, Keyboard::KEY_I}, {ImGuiKey_J, Keyboard::KEY_J},
+    {ImGuiKey_K, Keyboard::KEY_K}, {ImGuiKey_L, Keyboard::KEY_L},
+    {ImGuiKey_M, Keyboard::KEY_M}, {ImGuiKey_N, Keyboard::KEY_N},
+    {ImGuiKey_O, Keyboard::KEY_O}, {ImGuiKey_P, Keyboard::KEY_P},
+    {ImGuiKey_Q, Keyboard::KEY_Q}, {ImGuiKey_R, Keyboard::KEY_R},
+    {ImGuiKey_S, Keyboard::KEY_S}, {ImGuiKey_T, Keyboard::KEY_T},
+    {ImGuiKey_U, Keyboard::KEY_U}, {ImGuiKey_V, Keyboard::KEY_V},
+    {ImGuiKey_W, Keyboard::KEY_W}, {ImGuiKey_X, Keyboard::KEY_X},
+    {ImGuiKey_Y, Keyboard::KEY_Y}, {ImGuiKey_Z, Keyboard::KEY_Z},
+    {ImGuiKey_F1, Keyboard::KEY_F1}, {ImGuiKey_F2, Keyboard::KEY_F2},
+    {ImGuiKey_F3, Keyboard::KEY_F3}, {ImGuiKey_F4, Keyboard::KEY_F4},
+    {ImGuiKey_F5, Keyboard::KEY_F5}, {ImGuiKey_F6, Keyboard::KEY_F6},
+    {ImGuiKey_F7, Keyboard::KEY_F7}, {ImGuiKey_F8, Keyboard::KEY_F8},
+    {ImGuiKey_F9, Keyboard::KEY_F9}, {ImGuiKey_F10, Keyboard::KEY_F10},
+    {ImGuiKey_F11, Keyboard::KEY_F11}, {ImGuiKey_F12, Keyboard::KEY_F12},
+    {ImGuiKey_Apostrophe, Keyboard::KEY_APOSTROPHE}, {ImGuiKey_Comma, Keyboard::KEY_COMMA},
+    {ImGuiKey_Minus, Keyboard::KEY_MINUS}, {ImGuiKey_Period, Keyboard::KEY_PERIOD},
+    {ImGuiKey_Slash, Keyboard::KEY_SLASH}, {ImGuiKey_Semicolon, Keyboard::KEY_SEMICOLON},
+    {ImGuiKey_Equal, Keyboard::KEY_EQUAL}, {ImGuiKey_LeftBracket, Keyboard::KEY_LEFT_BRACKET},
+    {ImGuiKey_Backslash, Keyboard::KEY_BACKSLASH}, {ImGuiKey_RightBracket, Keyboard::KEY_RIGHT_BRACKET},
+    {ImGuiKey_GraveAccent, Keyboard::KEY_GRAVE_ACCENT}, {ImGuiKey_CapsLock, Keyboard::KEY_CAPS_LOCK},
+    {ImGuiKey_ScrollLock, Keyboard::KEY_SCROLL_LOCK}, {ImGuiKey_NumLock, Keyboard::KEY_NUM_LOCK},
+    {ImGuiKey_PrintScreen, Keyboard::KEY_PRINT_SCREEN}, {ImGuiKey_Pause, Keyboard::KEY_PAUSE},
+    {ImGuiKey_Keypad0, Keyboard::KEY_KP_0}, {ImGuiKey_Keypad1, Keyboard::KEY_KP_1},
+    {ImGuiKey_Keypad2, Keyboard::KEY_KP_2}, {ImGuiKey_Keypad3, Keyboard::KEY_KP_3},
+    {ImGuiKey_Keypad4, Keyboard::KEY_KP_4}, {ImGuiKey_Keypad5, Keyboard::KEY_KP_5},
+    {ImGuiKey_Keypad6, Keyboard::KEY_KP_6}, {ImGuiKey_Keypad7, Keyboard::KEY_KP_7},
+    {ImGuiKey_Keypad8, Keyboard::KEY_KP_8}, {ImGuiKey_Keypad9, Keyboard::KEY_KP_9},
+    {ImGuiKey_KeypadDecimal, Keyboard::KEY_KP_DECIMAL}, {ImGuiKey_KeypadDivide, Keyboard::KEY_KP_DIVIDE},
+    {ImGuiKey_KeypadMultiply, Keyboard::KEY_KP_MULTIPLY}, {ImGuiKey_KeypadSubtract, Keyboard::KEY_KP_SUBTRACT},
+    {ImGuiKey_KeypadAdd, Keyboard::KEY_KP_ADD}, {ImGuiKey_KeypadEnter, Keyboard::KEY_KP_ENTER},
+    {ImGuiKey_KeypadEqual, Keyboard::KEY_KP_EQUAL}
 };
 
 const char* GetClipboardText(ImGuiContext*) {
@@ -132,10 +132,10 @@ void ImGui_ImplMoss_NewFrame()
     if (wheelX != 0.0f || wheelY != 0.0f) io.AddMouseWheelEvent(wheelX, wheelY);
 
     for (const KeyMap& key : kKeys) io.AddKeyEvent(key.imgui, Moss_IsKeyPressed(key.moss));
-    io.AddKeyEvent(ImGuiMod_Ctrl, Moss_IsKeyPressed(Moss_Keyboard::KEY_LEFT_CONTROL) || Moss_IsKeyPressed(Moss_Keyboard::KEY_RIGHT_CONTROL));
-    io.AddKeyEvent(ImGuiMod_Shift, Moss_IsKeyPressed(Moss_Keyboard::KEY_LEFT_SHIFT) || Moss_IsKeyPressed(Moss_Keyboard::KEY_RIGHT_SHIFT));
-    io.AddKeyEvent(ImGuiMod_Alt, Moss_IsKeyPressed(Moss_Keyboard::KEY_LEFT_ALT) || Moss_IsKeyPressed(Moss_Keyboard::KEY_RIGHT_ALT));
-    io.AddKeyEvent(ImGuiMod_Super, Moss_IsKeyPressed(Moss_Keyboard::KEY_LEFT_SUPER) || Moss_IsKeyPressed(Moss_Keyboard::KEY_RIGHT_SUPER));
+    io.AddKeyEvent(ImGuiMod_Ctrl, Moss_IsKeyPressed(Keyboard::KEY_LEFT_CONTROL) || Moss_IsKeyPressed(Keyboard::KEY_RIGHT_CONTROL));
+    io.AddKeyEvent(ImGuiMod_Shift, Moss_IsKeyPressed(Keyboard::KEY_LEFT_SHIFT) || Moss_IsKeyPressed(Keyboard::KEY_RIGHT_SHIFT));
+    io.AddKeyEvent(ImGuiMod_Alt, Moss_IsKeyPressed(Keyboard::KEY_LEFT_ALT) || Moss_IsKeyPressed(Keyboard::KEY_RIGHT_ALT));
+    io.AddKeyEvent(ImGuiMod_Super, Moss_IsKeyPressed(Keyboard::KEY_LEFT_SUPER) || Moss_IsKeyPressed(Keyboard::KEY_RIGHT_SUPER));
     io.AddFocusEvent(Moss_IsWindowFocused(g_backend->window));
 
     uint32_t text[64] = {};
