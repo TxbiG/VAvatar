@@ -1030,26 +1030,26 @@ void VEditor::loadPNGTuberTextures()
         }
 
         if (pngTextures[i].path != resolved) {
-            MossTextureLoader::loadFromFile(resolved, pngTextures[i]);
+            Moss_LoadTexture(resolved, pngTextures[i]);
         }
     }
 }
 
 void VEditor::destroyPNGTuberTextures()
 {
-    for (MossTexture& texture : pngTextures) {
-        MossTextureLoader::destroy(texture);
+    for (Texture& texture : pngTextures) {
+        Moss_UnloadTexture(texture);
     }
 }
 
-MossTexture* VEditor::activePNGTuberTexture()
+Texture* VEditor::activePNGTuberTexture()
 {
     const int index = activePngTextureIndex(pngSlots, avatarPose.png);
     if (index < 0 || index >= static_cast<int>(pngTextures.size())) {
         return nullptr;
     }
 
-    MossTexture& texture = pngTextures[static_cast<size_t>(index)];
+    Texture& texture = pngTextures[static_cast<size_t>(index)];
     if (texture.id == 0) {
         loadPNGTuberTextures();
     }
