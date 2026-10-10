@@ -108,5 +108,5 @@ bool VStage::saveRuntimeSettings()
     return document.save(projectPath);
 }
 void VStage::loadPNGTuberTextures(){}
-void VStage::destroyPNGTuberTextures(){for(auto&t:pngTextures)MossTextureLoader::destroy(t);}
-MossTexture* VStage::activePNGTuberTexture(){return nullptr;}
+void VStage::destroyPNGTuberTextures(){for(auto&t:pngTextures)Moss_LoadTexture(t);}
+Texture* VStage::activePNGTuberTexture(){return nullptr;}
