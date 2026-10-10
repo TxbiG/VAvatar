@@ -2,7 +2,6 @@
 
 #include "../core/avatar/AvatarRigs.h"
 #include "../core/avatar/PNGTuberAssets.h"
-#include "../renderer/MossTexture.h"
 
 #include <Moss/Moss_Renderer.h>
 #include <imgui.h>
@@ -44,7 +43,7 @@ public:
     const std::string& getStatus() const override { return status; }
     bool isReady() const override { return ready; }
 private:
-    std::array<MossTexture, 5> textures;
+    std::array<Texture, 5> textures;
     PNGTuberPose pose;
     std::string folder;
     std::string status = "Not loaded";
@@ -67,7 +66,7 @@ public:
     bool isReady() const override { return ready; }
 private:
     struct LayerPhysicsState { float x=0.0f, y=0.0f, velocityX=0.0f, velocityY=0.0f; };
-    std::vector<MossTexture> textures;
+    std::vector<Texture> textures;
     std::vector<LayerPhysicsState> physicsStates;
     AvatarTrackingPose pose;
     std::string folder;
