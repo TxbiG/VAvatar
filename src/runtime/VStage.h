@@ -8,7 +8,6 @@
 #include "../core/tracking/Camera/OpenCV/CameraTrackingOpenCV.h"
 #include "../core/tracking/Camera/TrackingCamera.h"
 #include "../editor/app.h"
-#include "../renderer/MossTexture.h"
 #include "AvatarRuntime.h"
 #include "../core/project/ProjectDocument.h"
 
@@ -45,7 +44,7 @@ private:
     void destroyPNGTuberTextures();
 
     // Return the texture selected by the current PNGTuber tracking pose.
-    MossTexture* activePNGTuberTexture();
+    Texture* activePNGTuberTexture();
 
     App app;
     AudioTracking audioTracking;
@@ -58,7 +57,7 @@ private:
     std::unique_ptr<IAvatarRuntime> avatarRuntime;
     PNGTuberAssetSlots pngSlots;
     PNGTuberEffects pngEffects;
-    std::array<MossTexture, 5> pngTextures;
+    std::array<Texture, 5> pngTextures;
     AvatarRigType activeRigType = AvatarRigType::PNGTuber;
     StageResult result = StageResult::Exit;
     std::string projectPath = "Projects/UntitledAvatar/project.vavatar";
