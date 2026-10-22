@@ -1,0 +1,59 @@
+
+name: Sanitizer
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  sanitizer:
+    name: ASan and UBSan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout VAvatar
+        uses: actions/checkout@v4
+        with:
+          path: VAvatar
+
+      - name: Checkout Moss framework
+        uses: actions/checkout@v4
+        with:
+          repository: TxbiG/Moss
+          path: MossFramework
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libasound2-dev \
+            libgl1-mesa-dev \
+            libx11-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libxcursor-dev \
+            libxi-dev
+
+      - name: Configure
+        working-directory: VAvatar
+        run: >
+          cmake -S . -B build
+          -DCMAKE_BUILD_TYPE=Debug
+          -DMOSS_FRAMEWORK_DIR=${{ github.workspace }}/MossFramework
+          -DVAVATAR_ENABLE_OPENCV=OFF
+          -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-omit-frame-pointer"
+          -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined"
+
+      - name: Build
+        working-directory: VAvatar
+        run: cmake --build build --config Debug --parallel 2
+
+      - name: Verify executable
+        working-directory: VAvatar
+        run: test -x build/bin/VAvatar
