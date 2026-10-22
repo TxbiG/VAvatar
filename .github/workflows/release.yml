@@ -1,0 +1,117 @@
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            artifact: vavatar-windows-x64
+            archive: vavatar-windows-x64.zip
+
+          - os: ubuntu-latest
+            artifact: vavatar-linux-x64
+            archive: vavatar-linux-x64.tar.gz
+
+          - os: macos-latest
+            artifact: vavatar-macos
+            archive: vavatar-macos.tar.gz
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout VAvatar
+        uses: actions/checkout@v4
+        with:
+          path: VAvatar
+
+      - name: Checkout Moss framework
+        uses: actions/checkout@v4
+        with:
+          repository: TxbiG/Moss
+          path: MossFramework
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libasound2-dev \
+            libgl1-mesa-dev \
+            libx11-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libxcursor-dev \
+            libxi-dev
+
+      - name: Configure
+        working-directory: VAvatar
+        run: >
+          cmake -S . -B build
+          -DCMAKE_BUILD_TYPE=Release
+          -DMOSS_FRAMEWORK_DIR=${{ github.workspace }}/MossFramework
+
+      - name: Build
+        working-directory: VAvatar
+        run: cmake --build build --config Release --parallel 2
+
+      - name: Verify runtime output
+        working-directory: VAvatar
+        shell: bash
+        run: |
+          test -d build/bin
+          if ! find build/bin -type f | grep -q .; then
+            echo "No runtime files found in build/bin."
+            exit 1
+          fi
+
+      - name: Package Windows build
+        if: runner.os == 'Windows'
+        working-directory: VAvatar
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Compress-Archive -Path build/bin/* -DestinationPath "dist/${{ matrix.archive }}"
+
+      - name: Package Unix build
+        if: runner.os != 'Windows'
+        working-directory: VAvatar
+        run: |
+          mkdir -p dist
+          tar -czf "dist/${{ matrix.archive }}" -C build/bin .
+
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: VAvatar/dist/${{ matrix.archive }}
+          if-no-files-found: error
+
+  publish:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download packages
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
